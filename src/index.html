@@ -1,32 +1,41 @@
 ﻿<html lang="en">
+  <head>
+    <title>hello!</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  </head>
 
-<head>
-  <title>hello!</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-</head>
+  <body>
+    <div class="app">
+      <div class="listing-block">
+        <p>Listing:</p>
+        <select size="10" class="listing-select">
+          <option>apple</option>
+          <option>orange</option>
+        </select>
+      </div>
 
-<body>
-  <div class="app">
-    <div class="listing-block">
-      <p>Listing:</p>
-      <select size="10" class="listing-select">
-        <option>apple</option>
-        <option>orange</option>
-      </select>
+      <div class="store-block">
+        <p>Store:</p>
+        <select size="10" class="store-select"> </select>
+      </div>
     </div>
-  
-    <div class="store-block">
-      <p>Store:</p>
-      <select size="10" class="store-select">
-      </select>
-    </div>
-  </div>
-  
-  
-  <button id="add-button">
-    Add to store
-  </button>
-</body>
 
+    <button id="add-button">
+      Add to store
+    </button>
+    <button id="del-button">
+      Delete item
+    </button>
+    <button id="clear-button">
+      Clear all item
+    </button>
+    <button id="new-button">
+      New item
+    </button>
+    <button id="sort-button">
+      Sort item
+    </button>
+    <script src="js/main.js"></script>
+  </body>
 </html>
