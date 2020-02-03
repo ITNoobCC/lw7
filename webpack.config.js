@@ -14,7 +14,7 @@ module.exports = {
   entry: { main: "./src/index.js" },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "main.js"
+    filename: "app.min.js"
   },
   devServer: {
     contentBase: "./dist",
@@ -46,16 +46,16 @@ module.exports = {
   plugins: [
     new HtmlReplaceWebpackPlugin([{
       pattern: '<link rel="stylesheet" href="css/styles.css">',
-      replacement: '<link rel="stylesheet" href="styles.css">'
+      replacement: '<link rel="stylesheet" href="app.min.css">'
     },
     {
       pattern: '<script src="js/main.js"></script>',
-      replacement: '<script src="main.js"></script>'
+      replacement: '<script src="app.min.js"></script>'
     }
     ]),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'styles.css',
+      filename: 'app.min.css',
       chunkFilename: '[id].css',
     }),
     new HtmlWebpackPlugin({
