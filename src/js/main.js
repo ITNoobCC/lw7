@@ -1,3 +1,4 @@
+'use strict';
 window.onload = function() {
   var listingElements = ['apple', 'orange'];
   var storeElements = [];
@@ -10,16 +11,16 @@ window.onload = function() {
     }
   }
 
-  function delElements(element, value) {
-    console.log(element);
-    if (value === 'listing-select') {
-      for (var i = 0; i < listingElements.length; i++) {
+  function delElements(element, storeName) {
+    var i = 0;
+    if (storeName === 'listing-select') {
+      for (i = 0; i < listingElements.length; i++) {
         if (element === listingElements[i]) {
           listingElements.splice(i, 1);
         }
       }
-    } else if (value === 'store-select') {
-      for (var i = 0; i < storeElements.length; i++) {
+    } else if (storeName === 'store-select') {
+      for (i = 0; i < storeElements.length; i++) {
         if (element === storeElements[i]) {
           storeElements.splice(i, 1);
         }
@@ -33,7 +34,7 @@ window.onload = function() {
   }
 
   function newElements() {
-    var textElemet = prompt('Текс: ');
+    var textElemet = window.prompt('Текс: ');
     if (textElemet.length !== 0) {
       listingElements.push(textElemet);
     }
@@ -44,19 +45,21 @@ window.onload = function() {
   }
 
   function updateUI() {
+    var i = 0;
     var storeSelect = document.querySelector('.store-select');
     var listingSelect = document.querySelector('.listing-select');
+    var newOption;
     storeSelect.innerHTML = '';
     listingSelect.innerHTML = '';
 
-    for (var i = 0; i < listingElements.length; i++) {
-      var newOption = document.createElement('option');
+    for (i = 0; i < listingElements.length; i++) {
+      newOption = document.createElement('option');
       newOption.innerText = listingElements[i];
       listingSelect.append(newOption);
     }
 
-    for (var i = 0; i < storeElements.length; i++) {
-      var newOption = document.createElement('option');
+    for (i = 0; i < storeElements.length; i++) {
+      newOption = document.createElement('option');
       newOption.innerText = storeElements[i];
       storeSelect.append(newOption);
     }

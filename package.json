@@ -26,10 +26,10 @@
     "stylelint": "stylelint src/**/*.css",
     "jshint": "jshint src/",
     "watch": "npm-watch",
-    "webpack": "webpack -p",
-    "dev-mode": "npm-run-all --parallel server watch webpack",
+    "dev-mode": "npm-run-all --parallel server watch",
     "postinstall": "npm i -g live-server html-validate jshint",
-    "build": "npm run dev-mode"
+    "webpack": "webpack -p",
+    "build": "npm-run-all validate-html jshint stylelint webpack"
   },
   "author": "Kalagin Ivan",
   "license": "ISC",
