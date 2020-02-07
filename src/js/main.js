@@ -1,5 +1,5 @@
 window.onload = function() {
-  var listingElements = ["apple", "orange"];
+  var listingElements = ['apple', 'orange'];
   var storeElements = [];
 
   function addToStoreElements(element) {
@@ -10,15 +10,19 @@ window.onload = function() {
     }
   }
 
-  function delElements(element) {
-    for (var i = 0; i < listingElements.length; i++) {
-      if (element === listingElements[i]) {
-        listingElements.splice(i, 1);
+  function delElements(element, value) {
+    console.log(element);
+    if (value === 'listing-select') {
+      for (var i = 0; i < listingElements.length; i++) {
+        if (element === listingElements[i]) {
+          listingElements.splice(i, 1);
+        }
       }
-    }
-    for (var i = 0; i < storeElements.length; i++) {
-      if (element === storeElements[i]) {
-        storeElements.splice(i, 1);
+    } else if (value === 'store-select') {
+      for (var i = 0; i < storeElements.length; i++) {
+        if (element === storeElements[i]) {
+          storeElements.splice(i, 1);
+        }
       }
     }
   }
@@ -29,8 +33,10 @@ window.onload = function() {
   }
 
   function newElements() {
-    var textElemet = prompt("Текс: ");
-    listingElements.push(textElemet);
+    var textElemet = prompt('Текс: ');
+    if (textElemet.length !== 0) {
+      listingElements.push(textElemet);
+    }
   }
 
   function sortElements() {
@@ -38,41 +44,43 @@ window.onload = function() {
   }
 
   function updateUI() {
-    var storeSelect = document.querySelector(".store-select");
-    var listingSelect = document.querySelector(".listing-select");
-    storeSelect.innerHTML = "";
-    listingSelect.innerHTML = "";
+    var storeSelect = document.querySelector('.store-select');
+    var listingSelect = document.querySelector('.listing-select');
+    storeSelect.innerHTML = '';
+    listingSelect.innerHTML = '';
 
     for (var i = 0; i < listingElements.length; i++) {
-      var newOption = document.createElement("option");
+      var newOption = document.createElement('option');
       newOption.innerText = listingElements[i];
       listingSelect.append(newOption);
     }
 
     for (var i = 0; i < storeElements.length; i++) {
-      var newOption = document.createElement("option");
+      var newOption = document.createElement('option');
       newOption.innerText = storeElements[i];
       storeSelect.append(newOption);
     }
   }
 
-  var addButton = document.querySelector("#add-button");
-  var delButton = document.querySelector("#del-button");
-  var clearButton = document.querySelector("#clear-button");
-  var newButton = document.querySelector("#new-button");
-  var sortButton = document.querySelector("#sort-button");
+  var addButton = document.querySelector('#add-button');
+  var delButton = document.querySelector('#del-button');
+  var clearButton = document.querySelector('#clear-button');
+  var newButton = document.querySelector('#new-button');
+  var sortButton = document.querySelector('#sort-button');
 
   addButton.onclick = function() {
     var selectedOption = document.querySelector(
-      ".listing-select option:checked"
+      '.listing-select option:checked'
     );
     addToStoreElements(selectedOption.innerText);
     updateUI();
   };
 
   delButton.onclick = function() {
-    var selectedOption = document.querySelector("select option:checked");
-    delElements(selectedOption.innerText);
+    var selectedOptionList = document.querySelector('select option:checked')
+      .parentElement.classList;
+    var selectedOptionElement = document.querySelector('select option:checked');
+    delElements(selectedOptionElement.innerText, selectedOptionList.value);
 
     updateUI();
   };

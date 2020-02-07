@@ -1,6 +1,6 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const WebpackMd5Hash = require("webpack-md5-hash");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackMd5Hash = require('webpack-md5-hash');
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const MiniCssExtractPlugin  =  require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -11,13 +11,13 @@ module.exports = {
   optimization: {
     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
   },
-  entry: { main: "./src/index.js" },
+  entry: { main: './src/index.js' },
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "app.min.js"
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'app.min.js'
   },
   devServer: {
-    contentBase: "./dist",
+    contentBase: './dist',
     port: 7700
   },
   module: {
@@ -26,7 +26,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: 'babel-loader'
         }
       },
       {
